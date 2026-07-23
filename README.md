@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python main.py
 
 # real LAS files (e.g. downloaded Volve wells):
-python main.py --las /path/to/las/folder
+python main.py --las data/volve
 ```
 
 Click any wellbore in the left-hand tree to load its curves.
