@@ -7,7 +7,7 @@ Data sources:
                                         (e.g. downloaded Volve wells)
 
 When you get real OSDU sandbox access, add a RealOSDUClient
-implementing osdu_client.base.OSDUClient and wire it in here the
+implementing client_interfaces.base.OSDUClient and wire it in here the
 same way - nothing in ui/ or models/ changes.
 """
 
@@ -20,7 +20,7 @@ from ui.main_window import MainWindow
 
 def build_client(args):
     if args.las:
-        from osdu_client.las_client import LASFileClient
+        from client_interfaces.las_client import LASFileClient
         client = LASFileClient(args.las)
         for fname, err in client.load_errors:
             print(f"warning: could not load {fname}: {err}", file=sys.stderr)
@@ -29,7 +29,7 @@ def build_client(args):
             sys.exit(1)
         return client
 
-    from osdu_client.mock_client import MockOSDUClient
+    from client_interfaces.mock_client import MockOSDUClient
     return MockOSDUClient()
 
 

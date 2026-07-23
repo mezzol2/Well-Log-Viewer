@@ -9,7 +9,7 @@ main.py to instantiate it instead of MockOSDUClient.
 """
 
 from typing import Optional
-from osdu_client.base import OSDUClient
+from client_interfaces.base import OSDUClient
 from mock_data.generator import get_mock_wells
 
 

@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 
-from osdu_client.base import OSDUClient
+from client_interfaces.base import OSDUClient
 from ui.log_viewer import MultiTrackLogViewer
 from ui.curve_selector import CurveSelector
 

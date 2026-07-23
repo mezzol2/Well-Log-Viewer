@@ -46,7 +46,7 @@ real-world LAS quirks.
 ## Architecture
 
 The UI never touches a data source directly. Everything goes through the
-`OSDUClient` abstract interface (`osdu_client/base.py`), whose methods
+`OSDUClient` abstract interface (`client_interfaces/base.py`), whose methods
 mirror real OSDU service calls:
 
 | Method                     | Real OSDU equivalent                                  |
@@ -57,26 +57,26 @@ mirror real OSDU service calls:
 
 Two implementations ship with the app:
 
-- `osdu_client/mock_client.py` — synthetic data, zero setup (default)
-- `osdu_client/las_client.py` — real well data from a folder of LAS files
+- `client_interfaces/mock_client.py` — synthetic data, zero setup (default)
+- `client_interfaces/las_client.py` — real well data from a folder of LAS files
 
 **Connecting a real OSDU instance later** is an isolated change: add
-`osdu_client/real_client.py` implementing the same interface (handling
+`client_interfaces/real_client.py` implementing the same interface (handling
 OAuth2 bearer tokens and the `data-partition-id` header), then switch one
 line in `main.py`. The UI and data models don't change.
 
 ## Project structure
 
 ```
-main.py                      entry point (--las flag selects data source)
-models/osdu_models.py        Well, Wellbore, WellLog, LogCurve — shaped like OSDU schemas
-mock_data/generator.py       synthetic dataset (layered facies -> realistic curve responses)
-osdu_client/base.py          OSDUClient abstract interface
-osdu_client/mock_client.py   mock implementation
-osdu_client/las_client.py    real-data implementation over a folder of LAS files
-ui/main_window.py            main window: tree + curve picker + viewer
-ui/curve_selector.py         curve picker and per-curve details panel
-ui/log_viewer.py             multi-track log display widget
+main.py                            entry point (--las flag selects data source)
+models/osdu_models.py              Well, Wellbore, WellLog, LogCurve — shaped like OSDU schemas
+mock_data/generator.py             synthetic dataset (layered facies -> realistic curve responses)
+client_interfaces/base.py          OSDUClient abstract interface
+client_interfaces/mock_client.py   mock implementation
+client_interfaces/las_client.py    real-data implementation over a folder of LAS files
+ui/main_window.py                  main window: tree + curve picker + viewer
+ui/curve_selector.py               curve picker and per-curve details panel
+ui/log_viewer.py                   multi-track log display widget
 ```
 
 ## More

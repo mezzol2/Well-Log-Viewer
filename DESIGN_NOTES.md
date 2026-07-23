@@ -7,7 +7,7 @@ thinking behind the planned Claude integration, and the roadmap.
 ## Handling real-world LAS files
 
 Real LAS files — unlike synthetic data — are inconsistent, incomplete, and
-occasionally corrupt. `osdu_client/las_client.py` is written to survive
+occasionally corrupt. `client_interfaces/las_client.py` is written to survive
 that rather than assume clean input:
 
 - **Mnemonic aliases** — `RHOZ`/`DEN` → RHOB, `TNPH`/`NPOR` → NPHI,
@@ -91,5 +91,5 @@ Suggested order:
 2. **Well-header panel** — surface the LAS `~Well` section (operator,
    field, unique well ID, elevation, datum) when a well or wellbore is
    selected.
-3. **`osdu_client/real_client.py`** — implement `OSDUClient` against a live
+3. **`client_interfaces/real_client.py`** — implement `OSDUClient` against a live
    OSDU instance once sandbox credentials are available.

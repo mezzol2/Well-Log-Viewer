@@ -31,7 +31,7 @@ from typing import Optional
 import numpy as np
 import lasio
 
-from osdu_client.base import OSDUClient
+from client_interfaces.base import OSDUClient
 from models.osdu_models import Well, Wellbore, WellLog, LogCurve
 
 
