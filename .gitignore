@@ -1,3 +1,9 @@
+# Well log data (large third-party datasets, e.g. Volve - downloaded
+# separately per the README, not committed). Keep the folder itself so
+# --las has a default place to point at.
+/data/*
+!/data/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
