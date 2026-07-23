@@ -91,5 +91,5 @@ Suggested order:
 2. **Well-header panel** — surface the LAS `~Well` section (operator,
    field, unique well ID, elevation, datum) when a well or wellbore is
    selected.
-3. **`client_interfaces/real_client.py`** — implement `OSDUClient` against a live
+3. **`client_interfaces/real_client.py`** — implement `BaseClient` against a live
    OSDU instance once sandbox credentials are available.

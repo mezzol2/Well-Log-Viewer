@@ -1,5 +1,5 @@
 """
-LASFileClient: an OSDUClient implementation backed by a local folder
+LASFileClient: a BaseClient implementation backed by a local folder
 of LAS files (e.g. downloaded from the Volve open dataset, NLOG, or KGS).
 
 Each LAS file becomes one Wellbore with one WellLog. Files whose WELL
@@ -31,7 +31,7 @@ from typing import Optional
 import numpy as np
 import lasio
 
-from client_interfaces.base import OSDUClient
+from client_interfaces.base import BaseClient
 from models.osdu_models import Well, Wellbore, WellLog, LogCurve
 
 
@@ -90,7 +90,7 @@ def _normalize_mnemonic(raw: str) -> str:
     return base
 
 
-class LASFileClient(OSDUClient):
+class LASFileClient(BaseClient):
 
     def __init__(self, las_dir: str):
         self.las_dir = las_dir
@@ -105,7 +105,7 @@ class LASFileClient(OSDUClient):
         self._scan()
 
     # ------------------------------------------------------------------
-    # OSDUClient interface
+    # BaseClient interface
     # ------------------------------------------------------------------
 
     def search_wells(self, field_name: Optional[str] = None) -> list:

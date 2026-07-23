@@ -46,7 +46,7 @@ real-world LAS quirks.
 ## Architecture
 
 The UI never touches a data source directly. Everything goes through the
-`OSDUClient` abstract interface (`client_interfaces/base.py`), whose methods
+`BaseClient` abstract interface (`client_interfaces/base.py`), whose methods
 mirror real OSDU service calls:
 
 | Method                     | Real OSDU equivalent                                  |
@@ -71,7 +71,7 @@ line in `main.py`. The UI and data models don't change.
 main.py                            entry point (--las flag selects data source)
 models/osdu_models.py              Well, Wellbore, WellLog, LogCurve — shaped like OSDU schemas
 mock_data/generator.py             synthetic dataset (layered facies -> realistic curve responses)
-client_interfaces/base.py          OSDUClient abstract interface
+client_interfaces/base.py          BaseClient abstract interface
 client_interfaces/mock_client.py   mock implementation
 client_interfaces/las_client.py    real-data implementation over a folder of LAS files
 ui/main_window.py                  main window: tree + curve picker + viewer

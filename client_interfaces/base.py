@@ -2,7 +2,7 @@
 Defines the contract the rest of the app codes against.
 
 Method names/shapes are deliberately modeled on real OSDU service
-calls so that writing a RealOSDUClient later is a matter of
+calls so that writing a RealClient later is a matter of
 implementing this interface against actual HTTP endpoints, not
 restructuring the app:
 
@@ -26,7 +26,7 @@ from typing import Optional
 from models.osdu_models import Well, Wellbore, WellLog
 
 
-class OSDUClient(ABC):
+class BaseClient(ABC):
 
     @abstractmethod
     def search_wells(self, field_name: Optional[str] = None) -> list:

@@ -2,7 +2,7 @@
 Main window: a well/wellbore tree on the left (grouped by field),
 multi-track log viewer on the right.
 
-All data access goes through OSDUClient - this window never touches
+All data access goes through BaseClient - this window never touches
 mock_data directly, which is the point of the abstraction.
 """
 
@@ -12,13 +12,13 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 
-from client_interfaces.base import OSDUClient
+from client_interfaces.base import BaseClient
 from ui.log_viewer import MultiTrackLogViewer
 from ui.curve_selector import CurveSelector
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, client: OSDUClient):
+    def __init__(self, client: BaseClient):
         super().__init__()
         self.client = client
         self.setWindowTitle("OSDU Well Log Viewer (mock data)")

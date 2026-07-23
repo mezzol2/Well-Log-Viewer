@@ -6,8 +6,8 @@ Data sources:
   python main.py --las <folder>      -> real LAS files from a folder
                                         (e.g. downloaded Volve wells)
 
-When you get real OSDU sandbox access, add a RealOSDUClient
-implementing client_interfaces.base.OSDUClient and wire it in here the
+When you get real OSDU sandbox access, add a RealClient
+implementing client_interfaces.base.BaseClient and wire it in here the
 same way - nothing in ui/ or models/ changes.
 """
 
@@ -29,8 +29,8 @@ def build_client(args):
             sys.exit(1)
         return client
 
-    from client_interfaces.mock_client import MockOSDUClient
-    return MockOSDUClient()
+    from client_interfaces.mock_client import MockClient
+    return MockClient()
 
 
 def main():

@@ -1,19 +1,19 @@
 """
-Mock OSDUClient: serves the synthetic dataset from mock_data/generator.py
+MockClient: serves the synthetic dataset from mock_data/generator.py
 through the same interface a real OSDU-backed client would expose.
 
-Swap point for later: implement RealOSDUClient(OSDUClient) in this
+Swap point for later: implement RealClient(BaseClient) in this
 same package, backed by `requests` calls to your OSDU instance's
 Search / Storage / Wellbore DDMS endpoints, then change one line in
-main.py to instantiate it instead of MockOSDUClient.
+main.py to instantiate it instead of MockClient.
 """
 
 from typing import Optional
-from client_interfaces.base import OSDUClient
+from client_interfaces.base import BaseClient
 from mock_data.generator import get_mock_wells
 
 
-class MockOSDUClient(OSDUClient):
+class MockClient(BaseClient):
 
     def __init__(self):
         self._wells, self._wellbores, self._logs_by_wellbore = get_mock_wells()
